@@ -6,15 +6,23 @@ export const getRecommendation = async (
   category: Category,
   answers: UserAnswers
 ): Promise<Recommendation> => {
+  if (!process.env.API_KEY) {
+    throw new Error("Missing API Key. Please ensure your environment is configured correctly.");
+  }
+
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
   
+  const userContext = Object.entries(answers)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join(', ');
+
   const prompt = `
-    Based on these user preferences for a ${category}, recommend the SINGLE best specific product available on the market today.
+    Role: Senior Tech Consultant.
+    Task: Recommend the single best current model of ${category} based on these user preferences.
+    User Context: ${userContext}
     
-    User answers:
-    ${Object.entries(answers).map(([key, value]) => `- ${key}: ${value}`).join('\n')}
-    
-    Provide a detailed recommendation including its name, a catchy tagline, three specific reasons why it fits these answers, a short description, and 3 key specs.
+    Constraint: You MUST recommend a REAL product that is currently available for purchase in 2024-2025. 
+    Be specific (e.g., 'MacBook Pro 14 M3 Max' instead of just 'MacBook').
   `;
 
   try {
@@ -26,16 +34,18 @@ export const getRecommendation = async (
         responseSchema: {
           type: Type.OBJECT,
           properties: {
-            productName: { type: Type.STRING },
-            tagline: { type: Type.STRING },
+            productName: { type: Type.STRING, description: "Full official model name" },
+            tagline: { type: Type.STRING, description: "Punchy marketing line" },
             reasons: {
               type: Type.ARRAY,
-              items: { type: Type.STRING }
+              items: { type: Type.STRING },
+              description: "3 sentences explaining why this specifically fits the user's answers"
             },
-            description: { type: Type.STRING },
+            description: { type: Type.STRING, description: "2-3 sentence overview of the product" },
             specs: {
               type: Type.ARRAY,
-              items: { type: Type.STRING }
+              items: { type: Type.STRING },
+              description: "3 key technical specifications"
             }
           },
           required: ["productName", "tagline", "reasons", "description", "specs"]
@@ -43,10 +53,18 @@ export const getRecommendation = async (
       },
     });
 
-    const result = JSON.parse(response.text);
-    return result;
-  } catch (error) {
-    console.error("Gemini API Error:", error);
-    throw new Error("Failed to generate recommendation. Please try again.");
+    const text = response.text;
+    if (!text) throw new Error("Empty response from AI.");
+    
+    return JSON.parse(text);
+  } catch (error: any) {
+    console.error("Gemini API Error Detail:", error);
+    
+    // Check for specific error types
+    if (error.message?.includes("401") || error.message?.includes("403")) {
+      throw new Error("API Key issue detected. Please check your credentials.");
+    }
+    
+    throw new Error(error.message || "Failed to generate recommendation. The server might be busy.");
   }
 };

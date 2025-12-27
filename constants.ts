@@ -4,242 +4,251 @@ import { Category, CategoryConfig } from './types';
 export const CATEGORIES: Record<Category, CategoryConfig> = {
   Car: {
     icon: 'fa-car-side',
-    color: 'from-blue-500 to-indigo-600',
+    color: 'from-blue-600 to-indigo-700',
     questions: [
       {
         id: 'primary_use',
         text: 'What is your primary use for this vehicle?',
         options: [
           { label: 'Daily Commute', value: 'commute' },
-          { label: 'Family Trips', value: 'family' },
-          { label: 'Performance/Speed', value: 'speed' },
-          { label: 'Off-roading/Adventure', value: 'adventure' }
+          { label: 'Family & Grocery Trips', value: 'family' },
+          { label: 'Performance & Joyriding', value: 'speed' },
+          { label: 'Heavy Duty / Towing', value: 'utility' }
         ]
       },
       {
-        id: 'fuel_type',
-        text: 'What is your preferred engine type?',
+        id: 'energy_source',
+        text: 'What kind of fuel or energy do you prefer?',
         options: [
-          { label: 'Electric (EV)', value: 'electric' },
-          { label: 'Hybrid', value: 'hybrid' },
-          { label: 'Gasoline/Petrol', value: 'gas' }
+          { label: 'Fully Electric (EV)', value: 'electric' },
+          { label: 'Plug-in Hybrid', value: 'phev' },
+          { label: 'Traditional Gasoline', value: 'gas' },
+          { label: 'Diesel Power', value: 'diesel' }
         ]
       },
       {
-        id: 'budget',
-        text: 'What is your budget range?',
+        id: 'budget_limit',
+        text: 'What is your total budget range?',
         options: [
-          { label: 'Under $30k', value: 'low' },
-          { label: '$30k - $60k', value: 'mid' },
-          { label: '$60k - $100k', value: 'high' },
-          { label: 'Luxury ($100k+)', value: 'luxury' }
+          { label: 'Entry Level (Under $35k)', value: 'entry' },
+          { label: 'Mid-Range ($35k - $70k)', value: 'mid' },
+          { label: 'Premium ($70k - $120k)', value: 'premium' },
+          { label: 'Luxury / Supercar ($120k+)', value: 'luxury' }
         ]
       },
       {
-        id: 'size',
-        text: 'How many passengers do you usually carry?',
+        id: 'terrain',
+        text: 'What kind of terrain do you drive on most?',
         options: [
-          { label: 'Just me / 2 people', value: 'small' },
-          { label: 'Standard (4-5 people)', value: 'standard' },
-          { label: 'Large (7+ people)', value: 'large' }
+          { label: 'Smooth City Streets', value: 'city' },
+          { label: 'Highways & Interstates', value: 'highway' },
+          { label: 'Unpaved Trails / Off-road', value: 'offroad' },
+          { label: 'Mixed / All-terrain', value: 'mixed' }
         ]
       },
       {
-        id: 'transmission',
-        text: 'Preferred transmission type?',
+        id: 'tech_level',
+        text: 'How much in-car technology do you need?',
         options: [
-          { label: 'Automatic (Ease of use)', value: 'auto' },
-          { label: 'Manual (Driving feel)', value: 'manual' },
-          { label: 'No Preference', value: 'any' }
+          { label: 'Minimal (Focus on driving)', value: 'minimal' },
+          { label: 'Standard (CarPlay/Android Auto)', value: 'standard' },
+          { label: 'Advanced (Self-driving assists)', value: 'advanced' },
+          { label: 'Futuristic (Large screens everywhere)', value: 'max' }
         ]
       },
       {
-        id: 'safety',
-        text: 'How important are advanced safety features (ADAS)?',
+        id: 'cargo_needs',
+        text: 'How much storage/cargo space is required?',
         options: [
-          { label: 'Crucial (Must have everything)', value: 'max' },
-          { label: 'Standard (Basic tech is fine)', value: 'standard' },
-          { label: 'Secondary (Focus on price)', value: 'low' }
+          { label: 'Small (Just a backpack)', value: 'small' },
+          { label: 'Medium (Groceries/Gym bag)', value: 'medium' },
+          { label: 'Large (Luggage/Strollers)', value: 'large' },
+          { label: 'Huge (Moving gear/Furniture)', value: 'huge' }
         ]
       }
     ]
   },
   Laptop: {
     icon: 'fa-laptop-code',
-    color: 'from-purple-500 to-pink-600',
+    color: 'from-purple-600 to-fuchsia-700',
     questions: [
       {
-        id: 'primary_task',
-        text: 'What will you do most on this laptop?',
+        id: 'main_workflow',
+        text: 'What is the most intensive thing you will do?',
         options: [
-          { label: 'Gaming', value: 'gaming' },
-          { label: 'Professional Work / Coding', value: 'pro' },
-          { label: 'Graphic Design / Video Editing', value: 'creative' },
-          { label: 'Casual / School', value: 'casual' }
+          { label: 'Heavy Gaming', value: 'gaming' },
+          { label: 'Video Editing / 3D Rendering', value: 'creative' },
+          { label: 'Software Development', value: 'coding' },
+          { label: 'Web Browsing / Office Work', value: 'casual' }
         ]
       },
       {
-        id: 'os_preference',
-        text: 'Do you have an OS preference?',
+        id: 'portability_needs',
+        text: 'How often will you move the laptop?',
         options: [
-          { label: 'macOS', value: 'macos' },
-          { label: 'Windows', value: 'windows' },
-          { label: 'Linux', value: 'linux' },
-          { label: 'No Preference', value: 'none' }
+          { label: 'Every day (Needs to be light)', value: 'high' },
+          { label: 'Few times a week', value: 'medium' },
+          { label: 'Rarely (Stays on desk)', value: 'low' }
         ]
       },
       {
-        id: 'portability',
-        text: 'How important is portability?',
+        id: 'os_environment',
+        text: 'Which operating system do you prefer?',
         options: [
-          { label: 'Extremely (Ultrabook)', value: 'high' },
-          { label: 'Balanced (Daily Carry)', value: 'mid' },
-          { label: 'Not Important (Desktop Replacement)', value: 'low' }
+          { label: 'macOS (Apple)', value: 'macos' },
+          { label: 'Windows 11', value: 'windows' },
+          { label: 'ChromeOS', value: 'chrome' },
+          { label: 'Linux Distros', value: 'linux' }
         ]
       },
       {
-        id: 'budget',
-        text: 'What is your budget?',
+        id: 'screen_quality',
+        text: 'How important is the display quality?',
         options: [
-          { label: 'Budget (< $800)', value: 'budget' },
-          { label: 'Mid-range ($800 - $1500)', value: 'mid' },
-          { label: 'Premium ($1500+)', value: 'premium' }
+          { label: 'OLED/Pro Display (Color accuracy)', value: 'perfect' },
+          { label: 'High Refresh Rate (Smooth gaming)', value: 'fast' },
+          { label: 'Standard Matte (Reading/Text)', value: 'standard' }
         ]
       },
       {
-        id: 'screen_size',
-        text: 'What is your ideal screen size?',
+        id: 'battery_priority',
+        text: 'How much battery life do you need?',
         options: [
-          { label: 'Compact (13")', value: 'small' },
-          { label: 'Standard (14"-15")', value: 'medium' },
-          { label: 'Large (16"+)', value: 'large' }
+          { label: 'Full Workday (10+ hours)', value: 'all-day' },
+          { label: 'Moderate (5-8 hours)', value: 'mixed' },
+          { label: 'Doesn\'t matter (Always plugged in)', value: 'low' }
         ]
       },
       {
-        id: 'workspace',
-        text: 'Where will you use it most?',
+        id: 'budget_laptop',
+        text: 'What is your price range?',
         options: [
-          { label: 'On the go (Coffee shops, planes)', value: 'mobile' },
-          { label: 'Desk setup (Plugged into monitor)', value: 'desk' },
-          { label: 'Around the house', value: 'home' }
+          { label: 'Budget (< $700)', value: 'budget' },
+          { label: 'Mid-range ($700 - $1400)', value: 'mid' },
+          { label: 'High-end ($1400 - $2500)', value: 'high' },
+          { label: 'No Limit ($2500+)', value: 'infinite' }
         ]
       }
     ]
   },
   Phone: {
     icon: 'fa-mobile-screen-button',
-    color: 'from-emerald-500 to-teal-600',
+    color: 'from-emerald-600 to-teal-700',
     questions: [
       {
-        id: 'ecosystem',
-        text: 'Which ecosystem do you prefer?',
+        id: 'os_loyalty',
+        text: 'Which phone ecosystem are you in?',
         options: [
-          { label: 'iOS (Apple)', value: 'ios' },
-          { label: 'Android (Google, Samsung, etc.)', value: 'android' },
-          { label: 'Open to both', value: 'both' }
+          { label: 'iOS (iPhone)', value: 'ios' },
+          { label: 'Android (Samsung, Pixel, etc.)', value: 'android' },
+          { label: 'No preference / Willing to switch', value: 'any' }
         ]
       },
       {
-        id: 'priority',
-        text: 'What is your top priority?',
+        id: 'camera_use',
+        text: 'How important is the camera to you?',
         options: [
-          { label: 'Camera Quality', value: 'camera' },
-          { label: 'Battery Life', value: 'battery' },
-          { label: 'Gaming Performance', value: 'gaming' },
-          { label: 'Durability / Screen Size', value: 'screen' }
+          { label: 'Professional Photography', value: 'pro' },
+          { label: 'Social Media / Quick Snaps', value: 'social' },
+          { label: 'Documenting Life (Family/Video)', value: 'family' },
+          { label: 'Basic (Just utility)', value: 'basic' }
         ]
       },
       {
-        id: 'size',
-        text: 'Preferred device size?',
+        id: 'size_phone',
+        text: 'How big should the screen be?',
         options: [
-          { label: 'Compact', value: 'compact' },
-          { label: 'Large (Max/Plus models)', value: 'large' },
-          { label: 'Standard', value: 'standard' }
+          { label: 'Compact (Easy one-hand use)', value: 'small' },
+          { label: 'Standard (Balanced)', value: 'medium' },
+          { label: 'Max / Ultra (Huge display)', value: 'large' },
+          { label: 'Foldable (Tablet hybrid)', value: 'foldable' }
         ]
       },
       {
-        id: 'budget',
-        text: 'Budget range?',
+        id: 'charging_habit',
+        text: 'What is your charging style?',
         options: [
-          { label: 'Budget (< $400)', value: 'budget' },
-          { label: 'Mid-range ($400 - $800)', value: 'mid' },
-          { label: 'Flagship ($800+)', value: 'flagship' }
+          { label: 'Overnight (Standard battery)', value: 'overnight' },
+          { label: 'Quick bursts (Ultra-fast charging)', value: 'fast' },
+          { label: 'Wireless only', value: 'wireless' }
         ]
       },
       {
-        id: 'storage',
-        text: 'How much storage do you need?',
+        id: 'gaming_phone',
+        text: 'Do you play high-end mobile games?',
         options: [
-          { label: 'Minimal (Cloud user)', value: 'low' },
-          { label: 'Plenty (Offline music/videos)', value: 'medium' },
-          { label: 'Extreme (4K video recording)', value: 'high' }
+          { label: 'Yes, competitive mobile gaming', value: 'heavy' },
+          { label: 'Casual (Puzzle/Indie games)', value: 'light' },
+          { label: 'Not at all', value: 'none' }
         ]
       },
       {
-        id: 'refresh_rate',
-        text: 'Do you care about high refresh rate screens?',
+        id: 'phone_durability',
+        text: 'How rough are you with your devices?',
         options: [
-          { label: 'Yes, must be 120Hz+', value: 'fast' },
-          { label: 'No, 60Hz is fine', value: 'slow' }
+          { label: 'Very careful (Design over durability)', value: 'gentle' },
+          { label: 'Accident-prone (Need water/drop resistance)', value: 'rugged' },
+          { label: 'Average (Standard protection)', value: 'normal' }
         ]
       }
     ]
   },
   Smartwatch: {
     icon: 'fa-stopwatch-20',
-    color: 'from-orange-500 to-red-600',
+    color: 'from-orange-600 to-red-700',
     questions: [
       {
-        id: 'phone_compatibility',
-        text: 'What phone do you currently use?',
+        id: 'companion_device',
+        text: 'What phone will this watch connect to?',
         options: [
           { label: 'iPhone', value: 'iphone' },
           { label: 'Android Phone', value: 'android' }
         ]
       },
       {
-        id: 'main_focus',
-        text: 'What is your primary reason for a watch?',
+        id: 'watch_priority',
+        text: 'What is your main goal for the watch?',
         options: [
-          { label: 'Fitness & Sports Tracking', value: 'fitness' },
-          { label: 'Smart Notifications & Apps', value: 'smart' },
-          { label: 'Health Monitoring (ECG, Sleep)', value: 'health' },
-          { label: 'Style & Luxury', value: 'style' }
+          { label: 'Fitness & Gym Tracking', value: 'fitness' },
+          { label: 'Outdoor Adventure / Hiking', value: 'adventure' },
+          { label: 'Heart & Health Monitoring', value: 'health' },
+          { label: 'Fashion & Style', value: 'fashion' }
         ]
       },
       {
-        id: 'battery',
+        id: 'battery_watch',
         text: 'Desired battery life?',
         options: [
-          { label: '1-2 Days (High Tech)', value: 'short' },
-          { label: 'Weekly Charge', value: 'mid' },
-          { label: 'Weeks (Rugged/Adventure)', value: 'long' }
+          { label: 'Daily Charge (High functionality)', value: 'daily' },
+          { label: 'Multi-day (Balanced)', value: 'multi' },
+          { label: 'Weeks (Always-on utility)', value: 'long' }
         ]
       },
       {
-        id: 'budget',
-        text: 'Budget?',
+        id: 'smart_features',
+        text: 'Do you need apps and LTE calling?',
         options: [
-          { label: 'Entry Level (< $200)', value: 'budget' },
-          { label: 'Mid-range ($200 - $500)', value: 'mid' },
-          { label: 'Premium/Rugged ($500+)', value: 'premium' }
+          { label: 'Yes, full standalone capability', value: 'max' },
+          { label: 'Just notifications is fine', value: 'basic' },
+          { label: 'No, just fitness data', value: 'minimal' }
         ]
       },
       {
-        id: 'connectivity',
-        text: 'Do you need cellular connectivity (LTE)?',
+        id: 'watch_material',
+        text: 'Preferred case material?',
         options: [
-          { label: 'Yes, I want to leave my phone home', value: 'lte' },
-          { label: 'No, Bluetooth is enough', value: 'bluetooth' }
+          { label: 'Aluminum (Lightweight/Cheap)', value: 'aluminum' },
+          { label: 'Stainless Steel (Premium look)', value: 'steel' },
+          { label: 'Titanium (Rugged/Ultra-light)', value: 'titanium' }
         ]
       },
       {
-        id: 'water_resistance',
-        text: 'Do you plan on swimming with it?',
+        id: 'watch_budget',
+        text: 'How much are you willing to spend?',
         options: [
-          { label: 'Yes, frequently', value: 'swim' },
-          { label: 'No, just occasional rain', value: 'basic' }
+          { label: 'Budget (< $200)', value: 'budget' },
+          { label: 'Standard ($200 - $500)', value: 'standard' },
+          { label: 'Luxury ($500+)', value: 'luxury' }
         ]
       }
     ]
